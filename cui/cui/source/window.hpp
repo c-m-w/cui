@@ -26,6 +26,8 @@ namespace cui
 		void poll_events( );
 		void show( ) const;
 		void hide( ) const;
+
+		operator HWND( ) const;
 	};
 }
 
@@ -66,12 +68,14 @@ inline void cui::window::poll_events( )
 {
 	MSG message;
 
-	while( GetMessage( &message, 
-					   nullptr, 
-					   0, 
-					   0 ) )
+	while( PeekMessage( &message,
+						nullptr, 
+						0, 
+						0, 
+						PM_REMOVE ) )
 	{
-		0 != TranslateMessage( &message ) && DispatchMessage( &message );
+		TranslateMessage( &message );
+		DispatchMessage( &message );
 	}
 }
 
@@ -82,13 +86,16 @@ inline LRESULT __stdcall cui::window::handle_event( HWND hwnd,
 {
 	switch ( message )
 	{
+		case WM_NCCREATE:
 		case WM_CREATE:
 		{
 			return TRUE;
 		}
 	}
 
-	return TRUE;
+	return DefWindowProc( hwnd, 
+						  message,
+						  wparam, lparam);
 }
 
 inline void cui::window::show( ) const
@@ -101,3 +108,8 @@ inline void cui::window::hide( ) const
 {
 	ShowWindow( wnd,
 				FALSE );}
+
+inline cui::window::operator HWND( ) const
+{
+	return wnd;
+}

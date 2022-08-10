@@ -12,5 +12,12 @@ void main( )
 
 	init_renderer( window );
 
+	while( true )
+	{
+		window.poll_events( );
+		cui::i_renderer::r->begin_frame( );
+		cui::i_renderer::r->present_frame( );
+	}
+
 	return;
 }
