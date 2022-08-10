@@ -1,0 +1,3 @@
+﻿  example.cpp
+C:\Users\cole\Documents\GitHub\cui\cui\example\source\example.cpp(8,1): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  example.vcxproj -> C:\Users\cole\Documents\GitHub\cui\cui\Debug\example.exe
