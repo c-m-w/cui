@@ -12,6 +12,7 @@ namespace cui
 
 		const wchar_t * id;
 		HWND wnd = nullptr;
+		vec2d size { };
 
 	public:
 
@@ -20,7 +21,9 @@ namespace cui
 											   WPARAM,
 											   LPARAM );
 
-		window( const wchar_t * id );
+		window( const wchar_t * id,
+				int width,
+				int height );
 		~window( );
 
 		void poll_events( );
@@ -31,8 +34,11 @@ namespace cui
 	};
 }
 
-inline cui::window::window( const wchar_t * id ):
-	id { id }
+inline cui::window::window( const wchar_t * id,
+							int width,
+							int height ):
+	id { id },
+	size { width, height }
 {
 	WNDCLASS wc = { };
 
@@ -42,14 +48,20 @@ inline cui::window::window( const wchar_t * id ):
 
 	RegisterClass(&wc);
 
+	RECT wr { 0, 0, size.x, size.y };
+
+	AdjustWindowRect( &wr,
+					  WS_OVERLAPPEDWINDOW,
+					  FALSE );
+
 	wnd = CreateWindowEx( 0,
 						  id,
 						  L"",
 						  WS_OVERLAPPEDWINDOW,
 						  CW_USEDEFAULT, 
 						  CW_USEDEFAULT, 
-						  CW_USEDEFAULT, 
-						  CW_USEDEFAULT,
+						  wr.right - wr.left, 
+						  wr.bottom - wr.top,
 						  nullptr, 
 						  nullptr,
 						  GetModuleHandle(nullptr),
@@ -107,7 +119,8 @@ inline void cui::window::show( ) const
 inline void cui::window::hide( ) const
 {
 	ShowWindow( wnd,
-				FALSE );}
+				FALSE );
+}
 
 inline cui::window::operator HWND( ) const
 {

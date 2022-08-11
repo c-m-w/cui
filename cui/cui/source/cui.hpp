@@ -14,12 +14,13 @@ namespace cui
 
 
 #include "includes.hpp"
-#include "singleton.hpp"
+#include "types/singleton.hpp"
+#include "types/vector.hpp"
 #include "window.hpp"
 #include "renderer.hpp"
 
 //#if defined CGUI_D3D11
 
-#include "d3d11_implementation.hpp"
+#include "d3d11_implementation/d3d11_implementation.hpp"
 
 //#endif

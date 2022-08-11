@@ -144,10 +144,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="source\cui.hpp" />
-    <ClInclude Include="source\d3d11_implementation.hpp" />
+    <ClInclude Include="source\d3d11_implementation\d3d11_implementation.hpp" />
+    <ClInclude Include="source\d3d11_implementation\shader.hpp" />
     <ClInclude Include="source\includes.hpp" />
     <ClInclude Include="source\renderer.hpp" />
-    <ClInclude Include="source\singleton.hpp" />
+    <ClInclude Include="source\types\singleton.hpp" />
+    <ClInclude Include="source\types\vector.hpp" />
     <ClInclude Include="source\window.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

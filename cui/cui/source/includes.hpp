@@ -7,3 +7,6 @@
 
 #include <stdexcept>
 #include <memory>
+#include <array>
+#include <iostream>
+#include <vector>

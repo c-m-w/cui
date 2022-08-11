@@ -4,9 +4,27 @@
 
 #include "cui.hpp"
 
+//void test( int i )
+//{
+//	std::cout << i << std::endl;
+//}
+//
+//template< typename... T >
+//void test( int i, T... args )
+//{
+//	std::cout << i << std::endl;
+//	test( args... );
+//}
+
 void main( )
 {
-	auto window = cui::window( L"main" );
+	//test(1, 2, 3 );
+
+	cui::vec2d t( 1, 2 );
+
+	auto window = cui::window( L"main",
+							   1200,
+							   1200 );
 
 	window.show( );
 
