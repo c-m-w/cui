@@ -146,6 +146,7 @@
     <ClInclude Include="source\cui.hpp" />
     <ClInclude Include="source\d3d11_implementation\d3d11_implementation.hpp" />
     <ClInclude Include="source\d3d11_implementation\shader.hpp" />
+    <ClInclude Include="source\d3d11_implementation\vertex.hpp" />
     <ClInclude Include="source\includes.hpp" />
     <ClInclude Include="source\renderer.hpp" />
     <ClInclude Include="source\types\singleton.hpp" />
